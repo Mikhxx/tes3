@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Happy Birthday</title>
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+        box-sizing: border-box;
+      }
+
+      body {
+        overflow: hidden;
+        height: 100vh;
+        width: 100%;
+        background-color: #b079d0;
+      }
+
+      .birthday {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        color: #fff;
+        text-align: center;
+      }
+
+      .birthday h1 {
+        margin: 10px 0;
+        opacity: 0; /* Awal animasi (disembunyikan) */
+      }
+
+      .birthday h1.greeting {
+        font-size: 4.3rem;
+      }
+
+      .buttons {
+        display: flex;
+        gap: 20px;
+        margin-top: 20px;
+        opacity: 0; /* Awal animasi (disembunyikan) */
+      }
+
+      .btn {
+        padding: 15px 30px;
+        font-size: 1.5rem;
+        color: #000;
+        background-color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+      }
+
+      .btn:hover {
+        transform: scale(1.05);
+        background-color: #ce8e8e;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Happy Birthday Section -->
+    <div class="birthday">
+      <h1 class="greeting">Happy Birthday</h1>
+      <div class="buttons">
+        <button class="btn" onclick="location.href='Halaman1.html'">Next</button>
+        <button class="btn" onclick="location.href='Flowers.html'">Flowers</button>
+      </div>
+    </div>
+
+    <script>
+      // GSAP Animations
+      window.onload = function () {
+        // Animasi teks "Happy Birthday" dari atas ke tengah
+        gsap.fromTo(
+          ".greeting",
+          { y: -100, opacity: 0 }, // Mulai dari atas dengan opacity 0
+          { y: 0, opacity: 1, duration: 1.5, ease: "power2.out" } // Ke posisi tengah dengan opacity 1
+        );
+
+        // Animasi tombol dari bawah ke tengah
+        gsap.fromTo(
+          ".buttons",
+          { y: 100, opacity: 0 }, // Mulai dari bawah dengan opacity 0
+          { y: 0, opacity: 1, duration: 1.5, ease: "power2.out", delay: 1 } // Ke posisi tengah dengan opacity 1
+        );
+      };
+    </script>
+  </body>
+</html>

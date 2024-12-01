@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Move Page</title>
+    <style>
+        /* Untuk meratakan gambar di tengah */
+        .container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+        }
+
+        .image {
+            width: 300px; /* Sesuaikan ukuran gambar */
+            height: auto;
+        }
+
+        /* Gaya umum untuk tombol */
+        .button {
+            position: absolute;
+            bottom: 10px;
+            font-size: 14px;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+
+        /* Tombol Back dengan latar belakang merah */
+        .back-button {
+            left: 10px;
+            background-color: red;
+            color: white;
+        }
+
+        /* Tombol Next dengan latar belakang transparan */
+        .next-button {
+            right: 10px;
+            background-color: transparent;
+            color: white;
+        }
+
+        /* Ikon panah */
+        .back-button::before {
+            content: '←';
+            margin-right: 5px;
+        }
+
+        .next-button::after {
+            content: '→';
+            margin-left: 5px;
+        }
+
+        /* Efek hover untuk tombol */
+        .button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Hover khusus untuk tombol Back agar tetap merah */
+        .back-button:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <img src="move.jpg" alt="Gambar" class="image">
+    <button class="button back-button" onclick="window.location.href='index.html'">Back</button>
+    <button class="button next-button" onclick="window.location.href='love.html'"></button>
+</div>
+
+</body>
+</html>

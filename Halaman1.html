@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <style>
+        body {
+            font-family: 'Lobster', cursive;
+            display: flex;
+            flex-direction: column; 
+            justify-content: flex-start; 
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #bd74d7;
+            padding: 20px; 
+            overflow: hidden;
+        }
+
+        /* Foto tetap di atas */
+        img {
+            width: 500px;  
+            height: auto;
+            margin-bottom: 20px; 
+            border-radius: 10px; 
+            box-shadow: 0 0px 0px rgba(0, 0, 0, 0.2); 
+        }
+
+        /* Teks yang sedang diketik */
+        .typing-text {
+            font-size: 20px; 
+            overflow: hidden;
+            max-width: 100%;
+            white-space: normal; 
+            word-break: break-word; 
+            text-align: center; 
+        }
+
+        /* Tombol Back */
+        #back-button {
+            position: fixed;  
+            bottom: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #FF6347;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-decoration: none; 
+            z-index: 10; 
+        }
+
+        #back-button:hover {
+            background-color: #e55341;
+        }
+
+        /* Sembunyikan audio dari tampilan */
+        audio {
+            display: none;
+        }
+
+        /* Gaya tombol WhatsApp */
+        #whatsapp-button {
+            display: none;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        #whatsapp-button:hover {
+            background-color: #ffffff;
+        }
+
+        /* Gaya teks kecil di pojok kanan bawah */
+        .secret-button-text {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 10px;
+            color: #ffffff;
+            opacity: 0.6;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Tombol Back -->
+    <a id="back-button" href="index.html">← Back</a>
+
+    <!-- Gambar di atas -->
+    <img src="habede-removebg-preview.png" alt="Foto"> 
+
+    <!-- Animasi Teks -->
+    <div class="typing-text" id="typing"></div>
+
+    <!-- Audio dengan autoplay dan loop -->
+    <audio id="audio" autoplay loop>
+        <source src="Backsound.mp3" type="audio/mpeg"> 
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Tombol WhatsApp -->
+    <button id="whatsapp-button" onclick="window.location.href='https://wa.me/6282256920750'">Reply</button>
+
+    <!-- Teks kecil di pojok kanan bawah -->
+    <p class="secret-button-text">*i have secret button</p>
+
+    <script>
+        const texts = [
+            "Selamat ulang tahun",
+            "Wish you all the best",
+            "Semoga sehat selalu dan semua keinginanmu di tahun ini terwujud",
+            ""
+        ];
+
+        let index = 0;
+        const typingElement = document.getElementById('typing');
+        const typingSpeed = 50; 
+        const whatsappButton = document.getElementById('whatsapp-button'); 
+
+        function typeText() {
+            if (index < texts.length) {
+                const paragraph = document.createElement('p'); 
+                paragraph.textContent = ''; 
+                typingElement.appendChild(paragraph); 
+                let charIndex = 0;
+
+                function typeChar() {
+                    if (charIndex < texts[index].length) {
+                        paragraph.textContent += texts[index].charAt(charIndex);
+                        charIndex++;
+                        setTimeout(typeChar, typingSpeed);
+                    } else {
+                        index++; 
+                        if (index < texts.length) {
+                            setTimeout(typeText, 1000); 
+                        } else {
+                            whatsappButton.style.display = 'block';
+                        }
+                    }
+                }
+
+                typeChar();
+            }
+        }
+
+        typeText(); // Mulai animasi mengetik
+    </script>
+
+</body>
+</html>
